@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Doctor</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        /* Root Variables */
+        :root {
+            --primary: #2D3B80;
+            --secondary: #E4F2FF;
+            --accent: #FF6B6B;
+            --text: #333333;
+            --light: #FFFFFF;
+            --dark: #1A1A1A;
+            --gradient: linear-gradient(135deg, #2D3B80, #1E4D8E);
+            --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Container */
+        .container {
+            width: min(90%, 1200px);
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-image img {
+    max-width: 1000px;
+    Position: absolute;
+    left: 1200px;
+    top: 203px;
+    bottom: 90px;
+    height: auto;
+}
+
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            z-index: 1000;
+            box-shadow: var(--box-shadow);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .logo {
+            font-size: clamp(1.2rem, 2vw, 1.8rem);
+            color: var(--primary);
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: clamp(1rem, 3vw, 2rem);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--light);
+            padding: 6rem 1rem 4rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+            text-align: left; /* Ensures content stays aligned to the left */
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            opacity: 0.9;
+            text-align: left; /* Ensures content stays aligned to the left */
+        }
+
+        /* Info Boxes */
+        .info-boxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: -4rem;
+            padding: 0 1rem;
+            max-width: 1200px;
+            margin-inline: auto;
+        }
+
+        .info-box {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .info-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-box h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+
+        }
+
+        /* Content Sections */
+        .section {
+            padding: clamp(3rem, 8vw, 6rem) 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: clamp(2rem, 5vw, 4rem);
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            color: var(--primary);
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+             display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            padding: 0 1rem;
+            max-width: 1200px;
+            margin-inline: auto;
+        }
+
+        .card {
+            background: var(--light);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 2rem;
+            background: var(--light);
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: var(--box-shadow);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--gradient);
+            color: var(--light);
+            padding: clamp(3rem, 6vw, 5rem) 1rem 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: clamp(2rem, 4vw, 3rem);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            position: relative;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--light);
+                padding: 1rem;
+                flex-direction: column;
+                text-align: center;
+                box-shadow: var(--box-shadow);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .info-boxes {
+                margin-top: -2rem;
+            }
+
+            .timeline-item {
+                margin-left: 0;
+            }
+
+            .footer-grid {
+                gap: 2rem;
+            }
+        }
+
+        /* Additional Responsive Adjustments */
+        @media (max-width: 480px) {
+            .container {
+                width: 100%;
+                padding: 0 1rem;
+            }
+
+            .hero {
+                padding-top: 5rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+           <a href="#" class="logo">
+    <img src="logo.png" alt="Dr. Bikram Oli Logo" style="height: 50px;">
+</a>
+
+            <button class="mobile-menu-btn">☰</button>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#blogs">Blogs</a>
+                <a href="#about me">About Me</a>
+                <a href="#Contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+   <section id="home" class="hero"> 
+    <div class="hero-content" data-aos="fade-up">
+        <h1>Modern Healthcare Excellence</h1>
+        <p>Providing world-class medical care with cutting-edge technology</p>
+    </div>
+    <div class="hero-image">
+        <img src="3dimage.png" alt="3D Doctor Image">
+    </div>
+</section>
+
+
+    <div class="info-boxes">
+        <div class="info-box" data-aos="fade-up">
+            <h3>Expert Care</h3>
+            <p>Specialized medical services with a focus on patient comfort and modern treatment methods.</p>
+        </div>
+        <div class="info-box" data-aos="fade-up" data-aos-delay="100">
+            <h3>Global Experience</h3>
+            <p>International medical expertise combined with personalized healthcare solutions.</p>
+        </div>
+        <div class="info-box" data-aos="fade-up" data-aos-delay="200">
+            <h3>Advanced Technology</h3>
+            <p>State-of-the-art medical equipment and innovative treatment procedures.</p>
+        </div>
+    </div>
+
+    <section id="services" class="section">
+        <h2 class="section-title">My Working History</h2>
+        <div class="cards-grid">
+            <div class="card" data-aos="fade-up">
+                <h3>Primary Care</h3>
+                <p>Comprehensive health assessments and preventive care services for all age groups.</p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <h3>Specialized Treatment</h3>
+                <p>Expert care for complex medical conditions with personalized treatment plans.</p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <h3>Telemedicine</h3>
+                <p>Virtual consultations and remote healthcare services for your convenience.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item" data-aos="fade-right">
+                <h3>Chief Medical Officer</h3>
+                <p>2020 - Present</p>
+                <p>Leading innovative medical practices and managing international healthcare operations.</p>
+            </div>
+            <div class="timeline-item" data-aos="fade-left">
+                <h3>Senior Consultant</h3>
+                <p>2015 - 2020</p>
+                <p>Specialized treatment and research in advanced medical procedures.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Dedicated to providing exceptional healthcare with a focus on patient comfort and modern medical solutions.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Stats</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10k+</div>
+                        <p>Patients</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <p>Awards</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <p>Satisfaction</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>Email: contact@drchen.com</p>
+                <p>Phone: (555) 123-4567</p>
+                <p>Address: 123 Medical Center Drive, NY</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-container')) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
